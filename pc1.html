@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark #particles-js {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .bt {
+            position: absolute;
+            top: 2.6px;
+            right: 0;
+            width: 35px;
+            height: 35px;
+            margin-left: 5px;
+            margin-right: 4px;
+            background-color: #1b1b1b;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            transition: background-color 0.5s, right 0.5s;
+        }
+
+        .vnutri {
+            position: absolute;
+            background-color: white;
+            width: 80px;
+            height: 40px;
+            right: 15px;
+            top: 20px;
+            border-radius: 50px;
+            z-index: 1;
+        }
+
+        .dark {
+            background-color: rgb(37, 37, 37);
+            color: white;
+        }
+
+        .dark .slov,
+        .dark .pc-specs,
+        .dark .price,
+        .dark .pc-info {
+            color: white;
+            background-color: #333;
+            background: #333;
+        }
+
+        .moved {
+            right: 37px;
+        }
+
+        .bt:hover {
+            background-color: #8305aa;
+        }
+
+        .bt:active {
+            animation: clickEffect 1.5s forwards;
+        }
+
+        @keyframes clickEffect {
+            0% {
+                transform: scale(1);
+                background-color: #b203e7;
+            }
+
+            50% {
+                transform: scale(0.9);
+                background-color: #8305aa;
+            }
+
+            100% {
+                transform: scale(1);
+                background-color: #1b1b1b;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5F5;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+            color: black;
+        }
+
+        .slov {
+            font-size: 25px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            padding: 15px;
+            color: white;
+            opacity: 0.7;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu li {
+            display: inline;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .menu a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .burger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .image-gallery img {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .pc-info {
+            background: rgb(146, 146, 146);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.8;
+            width: 400px;
+            transition: background-color 0.5s;
+        }
+
+        .pc-specs {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 22px;
+            margin-top: 15px;
+            color: #d9534f;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .discount {
+            font-size: 18px;
+            color: #f00;
+            margin-top: 10px;
+        }
+
+        #countdown {
+            font-size: 20px;
+            color: #e74c3c;
+        }
+        .sledd{
+            position: absolute;
+            background: rgb(146, 146, 146);
+            width: 120px;
+            height: 60px;
+            opacity: 0.8;
+            bottom: 30px;
+            right: 50px;
+            border-radius: 50px;
+            font-size: 40px;
+            padding-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-gallery img {
+                width: 300px;
+            }
+
+            .pc-info {
+                width: 90%;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                position: absolute;
+                top: 45px;
+                left: 0;
+                width: 100px;
+                text-align: left;
+                padding-bottom: 15px;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .bt {
+                top: 2.5px;
+                height: 35px;
+                width: 35px;
+            }
+
+            .moved {
+                right: 37px;
+            }
+
+            .vnutri {
+                top: 10px;
+            }
+            .sledd{
+                top: 250px;
+                right: 5px;
+                width: 80px;
+                height: 40px;
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <span class="vnutri">
+        <button class="bt" onclick="tema()"></button>
+    </span>
+    <nav class="navbar">
+        <ul class="menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="onas.html">О нас</a></li>
+            <li><a href="uslugi.html">Услуги</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+
+    <div class="container">
+        <button class="sledd" onclick="window.location.href='pc2.html';">→</button>
+        <div class="image-gallery">
+            <img src="1.png" alt="Фото 1">
+        </div>
+        <div class="pc-info">
+            <div class="image-caption"><b class="slov">GANSOR-1301880</b></div>
+            <div class="pc-specs">
+                <p><b>Процессор:</b> Intel Core i7-12700K</p>
+                <p><b>Видеокарта:</b> NVIDIA GeForce RTX 3080</p>
+                <p><b>ОЗУ:</b> 32GB DDR5</p>
+                <p><b>Накопитель:</b> SSD 1TB NVMe</p>
+                <p><b>Охлаждение:</b> Жидкостное</p>
+            </div>
+            <div class="price">
+                <span class="old-price">$1899</span>
+                <span id="new-price">$1529</span>
+            </div>
+            <div class="discount">
+                Скидка: <span id="discount">19%</span>
+            </div>
+            <div id="countdown"></div>
+        </div>
+    </div>
+
+    <script>
+        let vantaEffect;
+
+        function initVanta() {
+            vantaEffect = VANTA.CELLS({
+                el: "#particles-js",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                color1: 0xffffff,
+                color2: 0xffffff
+            });
+        }
+
+        function tema() {
+            document.body.classList.toggle('dark');
+            document.querySelector('.bt').classList.toggle('moved');
+            document.querySelector('.bt').classList.toggle('dark');
+            document.querySelector('.slov').classList.toggle('dark');
+            document.querySelector('.pc-specs').classList.toggle('dark');
+            document.querySelector('.pc-info').classList.toggle('dark');
+            let particles = document.getElementById("particles-js");
+            particles.style.opacity = "0";
+
+            setTimeout(() => {
+                vantaEffect.setOptions({
+                    color1: document.body.classList.contains('dark') ? 0x0 : 0xffffff,
+                    color2: document.body.classList.contains('dark') ? 0x595959 : 0xffffff
+                });
+
+                particles.style.opacity = "1";
+            }, 300);
+        }
+
+        window.addEventListener("DOMContentLoaded", initVanta);
+
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+
+        // Discount logic
+        const originalPrice = 1899;
+        const discountPercentage = 19;
+        const discountAmount = originalPrice * (discountPercentage / 100);
+        const newPrice = originalPrice - discountAmount;
+
+        document.getElementById("new-price").textContent = `$${newPrice.toFixed(2)}`;
+        document.getElementById("discount").textContent = `${discountPercentage}%`;
+
+        // Countdown timer
+        function startCountdown() {
+            const endDate = new Date("2025-03-20T00:00:00").getTime();
+            const countdownElement = document.getElementById("countdown");
+
+            const interval = setInterval(function () {
+                const now = new Date().getTime();
+                const timeLeft = endDate - now;
+
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = "Скидка завершена!";
+                } else {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                    countdownElement.innerHTML = `До конца скидки: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+    </script>
+    <script src="three.min.js"></script>
+    <script src="vanta.cells.min.js"></script>
+</body>
+
+</html>
